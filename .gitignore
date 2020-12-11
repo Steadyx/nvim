@@ -3,4 +3,5 @@ coc-settings.json
 init-copy.vim
 pack/
 plugin
+backup
 .netrwhist
