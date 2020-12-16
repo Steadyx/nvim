@@ -42,8 +42,18 @@ return require('packer').startup(function()
  -- DevIcons for Telescope
   use { 'kyazdani42/nvim-web-devicons' }
   -- Colorscheme
-  use { 'sainnhe/forest-night', 
+  use { 
+        'christianchiarulli/nvcode-color-schemes.vim', 
 	 config = require'plugins.colorscheme',
          as = 'colorscheme', 
+      }
+  -- Status line helper
+  use {
+        'glepnir/galaxyline.nvim',
+         branch = 'main',
+         -- your statusline
+	 config = require'plugins.statusline',
+         -- some optional icons
+         requires = {'kyazdani42/nvim-web-devicons', opt = true}
       }
 end)
