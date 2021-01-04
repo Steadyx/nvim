@@ -47,6 +47,11 @@ return require('packer').startup(function()
 	 config = require'plugins.colorscheme',
          as = 'colorscheme', 
       }
+  -- Cheat Sheat
+  use { 'RishabhRD/popfix' }
+  use {
+        'RishabhRD/nvim-cheat.sh',
+      }
   -- Status line helper
   use {
         'glepnir/galaxyline.nvim',
