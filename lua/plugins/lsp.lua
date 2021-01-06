@@ -10,10 +10,10 @@ return function()
   vimp.nnoremap({'silent'}, 'gy', "<cmd>lua vim.lsp.buf.type_definition()<CR>")
   vimp.nnoremap({'silent'}, 'gd', "<cmd>lua vim.lsp.buf.declaration()<CR>")
 
-  require'lspconfig'.rust_analyzer.setup{}
-  require'lspconfig'.vuels.setup{}
-  require'lspconfig'.tsserver.setup{}
-  require'lspconfig'.intelephense.setup{}
+  require'lspconfig'.rust_analyzer.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.vuels.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.tsserver.setup{on_attach=require'completion'.on_attach}
+  require'lspconfig'.intelephense.setup{on_attach=require'completion'.on_attach}
 	
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

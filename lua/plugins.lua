@@ -24,6 +24,11 @@ return require('packer').startup(function()
 	'neovim/nvim-lspconfig', 
 	 config = require'plugins.lsp',
       }
+ -- Completion engine
+  use { 
+	'nvim-lua/completion-nvim', 
+     	config = require'plugins.completion'
+      }
  -- Conquer of Completion, Language Server mainly for ESlint/Explorer
   use { 
 	'neoclide/coc.nvim',
@@ -46,7 +51,11 @@ return require('packer').startup(function()
         'christianchiarulli/nvcode-color-schemes.vim', 
 	 config = require'plugins.colorscheme',
          as = 'colorscheme', 
+  -- Vim Surround - Surrounding/deleting
+  use { 'tpope/vim-surround' }
       }
+  -- Emmet
+  use { 'mattn/emmet-vim' }
   -- Cheat Sheat
   use { 'RishabhRD/popfix' }
   use {
