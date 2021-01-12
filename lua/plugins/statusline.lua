@@ -36,7 +36,7 @@ gls.left[2] = {
       local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
       return alias[vim.fn.mode()]
     end,
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.yellow,function()
       if not buffer_not_empty() then
         return colors.purple
@@ -57,7 +57,7 @@ gls.left[4] = {
   FileName = {
     provider = {'FileName','FileSize'},
     condition = buffer_not_empty,
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.purple,colors.darkblue},
     highlight = {colors.magenta,colors.darkblue}
   }
@@ -113,7 +113,7 @@ gls.left[9] = {
 gls.left[10] = {
   LeftEnd = {
     provider = function() return '|' end,
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.purple,colors.purple}
   }
@@ -140,7 +140,7 @@ gls.left[13] = {
 gls.right[1]= {
   FileFormat = {
     provider = 'FileFormat',
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.bg,colors.purple},
     highlight = {colors.grey,colors.purple},
   }
@@ -148,7 +148,7 @@ gls.right[1]= {
 gls.right[2] = {
   LineInfo = {
     provider = 'LineColumn',
-    separator = ' | ',
+    separator = " ", 
     separator_highlight = {colors.darkblue,colors.purple},
     highlight = {colors.grey,colors.purple},
   },
@@ -156,7 +156,7 @@ gls.right[2] = {
 gls.right[3] = {
   PerCent = {
     provider = 'LinePercent',
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.darkblue,colors.purple},
     highlight = {colors.grey,colors.darkblue},
   }
@@ -171,7 +171,7 @@ gls.right[4] = {
 gls.short_line_left[1] = {
   BufferType = {
     provider = 'FileTypeName',
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.grey,colors.purple}
   }
@@ -181,7 +181,7 @@ gls.short_line_left[1] = {
 gls.short_line_right[1] = {
   BufferIcon = {
     provider= 'BufferIcon',
-    separator = '|',
+    separator = " ", 
     separator_highlight = {colors.purple,colors.bg},
     highlight = {colors.grey,colors.purple}
   }

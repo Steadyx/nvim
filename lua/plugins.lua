@@ -5,8 +5,10 @@ vim.cmd [[ packadd packer.nvim ]]
 vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
 return require('packer').startup(function()
-  -- Packer can manage itself as an optional plugin
+ -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
+ -- Git integration
+  use {	'tpope/vim-fugitive' }
  -- Quickscope - Fast horizontal movement
   use { 
 	'unblevable/quick-scope',
@@ -70,4 +72,9 @@ return require('packer').startup(function()
          -- some optional icons
          requires = {'kyazdani42/nvim-web-devicons', opt = true}
       }
+  -- Snippets from VSCode
+  use { 'hrsh7th/vim-vsnip' }
+  use { 'hrsh7th/vim-vsnip-integ' }
+  use { 'hollowtree/vscode-vue-snippets' }
+  use { 'sdras/vue-vscode-snippets' }
 end)
