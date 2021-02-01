@@ -4,5 +4,5 @@ return function()
     return
   end
 
-  vimp.nmap('<space>e', ':CocCommand explorer<CR>')
+  vimp.nnoremap('<space>e', ':CocCommand explorer<CR>')
 end

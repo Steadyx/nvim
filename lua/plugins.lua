@@ -21,6 +21,12 @@ return require('packer').startup(function()
 	 run = ':TSUpdate', 
       }
   use { 'nvim-treesitter/nvim-treesitter-refactor' }
+ -- Telecope - A powerful/extensible fuzzy file searcher
+  use { 'nvim-lua/popup.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'nvim-telescope/telescope.nvim', 
+         config = require'plugins.telescope',
+      }
  -- Neovim Language Server config
   use { 
 	'neovim/nvim-lspconfig', 
@@ -36,13 +42,6 @@ return require('packer').startup(function()
 	'neoclide/coc.nvim',
 	 branch = 'release',
 	 config = require'plugins.coc'
-      }
- -- Telecope - A powerful/extensible fuzzy file searcher
-  use { 'nvim-lua/popup.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 
-	'nvim-telescope/telescope.nvim', 
-	 config = require'plugins.telescope',
       }
  -- Allow vim config through lua
   use { 'svermeulen/vimpeccable' }
@@ -76,5 +75,8 @@ return require('packer').startup(function()
   use { 'hrsh7th/vim-vsnip' }
   use { 'hrsh7th/vim-vsnip-integ' }
   use { 'hollowtree/vscode-vue-snippets' }
-  use { 'sdras/vue-vscode-snippets' }
+  -- use { 'sdras/vue-vscode-snippets' }
+  use { 'RishabhRD/nvim-lsputils',
+         config  = require'plugins.lsputils',
+      }
 end)
