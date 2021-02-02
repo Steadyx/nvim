@@ -1,6 +1,5 @@
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[ packadd packer.nvim ]]
-
 -- Compile when config changes
 vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
@@ -13,7 +12,7 @@ return require('packer').startup(function()
   use { 
 	'unblevable/quick-scope',
 	 config = require'plugins.quickscope',
-      }
+      } 
   -- Neovim Treesitter syntax highlighting
   use { 
         'nvim-treesitter/nvim-treesitter', 
@@ -32,6 +31,7 @@ return require('packer').startup(function()
 	'neovim/nvim-lspconfig', 
 	 config = require'plugins.lsp',
       }
+  use { 'glepnir/lspsaga.nvim' }
  -- Completion engine
   use { 
 	'nvim-lua/completion-nvim', 
@@ -79,4 +79,6 @@ return require('packer').startup(function()
   use { 'RishabhRD/nvim-lsputils',
          config  = require'plugins.lsputils',
       }
+  -- Auto comment
+  use { 'b3nj5m1n/kommentary' }
 end)
