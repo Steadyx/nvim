@@ -4,4 +4,5 @@ return function()
  vim.cmd [[inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"]]
  vim.cmd[[set completeopt=menuone,noinsert,noselect]]
  vim.cmd[[set shortmess+=c]]
+ vim.g.completion_matching_strategy_list = {'exact', 'substring', 'fuzzy'}
 end

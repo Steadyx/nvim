@@ -1,17 +1,17 @@
-if not pcall(require, 'vimp') then
-  vim.cmd [[ echom 'Cannot load vimp' ]]
-  return
+if not pcall(
+    require, 'vimp'
+) then
+    vim.cmd [[ echom 'Cannot load vimp' ]]
+    return
 end
+vim.cmd [[ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" ]]
+vim.cmd [[ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" ]]
 
-do local number = true
-  vim.o.number = number
-  vim.w.number = number
-end
+vim.o.termguicolors = true
 
-do local relativenumber = true
-  vim.o.relativenumber = relativenumber
-  vim.wo.relativenumber = relativenumber
-end
+vim.cmd [[ set number relativenumber ]]
 
-vimp.inoremap('jj', '<Esc>')
+vimp.inoremap(
+    'jj', '<Esc>'
+)
 

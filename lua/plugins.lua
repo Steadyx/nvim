@@ -6,8 +6,15 @@ vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 return require('packer').startup(function()
  -- Packer can manage itself as an optional plugin
   use { 'wbthomason/packer.nvim', opt = true }
+ -- Allow vim config through lua
+  use { 'svermeulen/vimpeccable' }
  -- Git integration
   use {	'tpope/vim-fugitive' }
+ -- Auto Formatting
+  use { 
+	'lukas-reineke/format.nvim',
+	 config = require'plugins.format',
+      } 
  -- Quickscope - Fast horizontal movement
   use { 
 	'unblevable/quick-scope',
@@ -20,12 +27,6 @@ return require('packer').startup(function()
 	 run = ':TSUpdate', 
       }
   use { 'nvim-treesitter/nvim-treesitter-refactor' }
- -- Telecope - A powerful/extensible fuzzy file searcher
-  use { 'nvim-lua/popup.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'nvim-telescope/telescope.nvim', 
-         config = require'plugins.telescope',
-      }
  -- Neovim Language Server config
   use { 
 	'neovim/nvim-lspconfig', 
@@ -43,8 +44,6 @@ return require('packer').startup(function()
 	 branch = 'release',
 	 config = require'plugins.coc'
       }
- -- Allow vim config through lua
-  use { 'svermeulen/vimpeccable' }
  -- DevIcons for Telescope
   use { 'kyazdani42/nvim-web-devicons' }
   -- Colorscheme
@@ -81,4 +80,10 @@ return require('packer').startup(function()
       }
   -- Auto comment
   use { 'b3nj5m1n/kommentary' }
+ -- Telecope - A powerful/extensible fuzzy file searcher
+  use { 'nvim-lua/popup.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'nvim-telescope/telescope.nvim', 
+         config = require'plugins.telescope',
+      }
 end)
