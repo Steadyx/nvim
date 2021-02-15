@@ -9,37 +9,40 @@ return require('packer').startup(function()
  -- Allow vim config through lua
   use { 'svermeulen/vimpeccable' }
  -- Git integration
-  use {	'tpope/vim-fugitive' }
+  use {
+	'tpope/vim-fugitive',
+	config = require'plugins.fugitive'
+      }
  -- Auto Formatting
-  use { 
+  use {
 	'lukas-reineke/format.nvim',
 	 config = require'plugins.format',
-      } 
+      }
  -- Quickscope - Fast horizontal movement
-  use { 
+  use {
 	'unblevable/quick-scope',
 	 config = require'plugins.quickscope',
-      } 
+      }
   -- Neovim Treesitter syntax highlighting
-  use { 
-        'nvim-treesitter/nvim-treesitter', 
+  use {
+        'nvim-treesitter/nvim-treesitter',
 	 config = require'plugins.treesitter',
-	 run = ':TSUpdate', 
+	 run = ':TSUpdate',
       }
   use { 'nvim-treesitter/nvim-treesitter-refactor' }
  -- Neovim Language Server config
-  use { 
-	'neovim/nvim-lspconfig', 
+  use {
+	'neovim/nvim-lspconfig',
 	 config = require'plugins.lsp',
       }
   use { 'glepnir/lspsaga.nvim' }
  -- Completion engine
-  use { 
-	'nvim-lua/completion-nvim', 
+  use {
+	'nvim-lua/completion-nvim',
      	config = require'plugins.completion'
       }
  -- Conquer of Completion, Language Server mainly for ESlint/Explorer
-  use { 
+  use {
 	'neoclide/coc.nvim',
 	 branch = 'release',
 	 config = require'plugins.coc'
@@ -47,13 +50,13 @@ return require('packer').startup(function()
  -- DevIcons for Telescope
   use { 'kyazdani42/nvim-web-devicons' }
   -- Colorscheme
-  use { 
-        'christianchiarulli/nvcode-color-schemes.vim', 
+  use {
+        'glepnir/zephyr-nvim',
 	 config = require'plugins.colorscheme',
-         as = 'colorscheme', 
+         as = 'colorscheme',
+      }
   -- Vim Surround - Surrounding/deleting
   use { 'tpope/vim-surround' }
-      }
   -- Emmet
   use { 'mattn/emmet-vim' }
   -- Cheat Sheat
@@ -83,7 +86,11 @@ return require('packer').startup(function()
  -- Telecope - A powerful/extensible fuzzy file searcher
   use { 'nvim-lua/popup.nvim' }
   use { 'nvim-lua/plenary.nvim' }
-  use { 'nvim-telescope/telescope.nvim', 
+  use { 'nvim-telescope/telescope.nvim',
          config = require'plugins.telescope',
+      }
+ -- Floatterm - a floating terminal for neovim
+  use { 'numtostr/FTerm.nvim',
+         config = require'plugins.floatterm',
       }
 end)
