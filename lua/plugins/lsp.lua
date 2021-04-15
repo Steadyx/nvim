@@ -29,7 +29,7 @@ return function()
                                "/lua-language-server"
     local servers = {
         "vuels", "rust_analyzer", "tsserver", "intelephense", "sumneko_lua",
-        "pyright"
+        "pyright", "bashls"
     }
 
     local on_attach = function(client, bufnr)
@@ -59,7 +59,7 @@ return function()
         )
         buf_set_keymap(
             'n', 'K',
-            '<cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts
+            '<cmd>lua vim.lsp.buf.hover()<CR>', opts
         )
         buf_set_keymap(
             'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts
