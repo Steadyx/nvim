@@ -15,4 +15,5 @@ return function ()
 
   -- Closer to the metal
   map('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+  map('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 end
