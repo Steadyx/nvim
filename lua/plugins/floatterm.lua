@@ -1,4 +1,19 @@
 return function ()
-   vim.fn.nvim_set_keymap('n', '<Leader>i', '<CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
-   vim.fn.nvim_set_keymap('t', '<Leader>i', '<C-\\><C-n><CMD>lua require"FTerm".toggle()<CR>', { noremap = true, silent = true })
+  require'FTerm'.setup({
+      dimensions  = {
+          height = 0.8,
+          width = 0.8,
+          x = 0.5,
+          y = 0.5
+      },
+      border = 'single' -- or 'double'
+  })
+
+  -- Keybinding
+  local map = vim.api.nvim_set_keymap
+  local opts = { noremap = true, silent = true }
+
+  -- Closer to the metal
+  map('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+  map('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 end
