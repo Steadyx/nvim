@@ -62,14 +62,14 @@ return require('packer').startup(function()
         'RishabhRD/nvim-cheat.sh',
       }
  -- Status line helper
-  use {
+  --[[ use {
         'glepnir/galaxyline.nvim',
          branch = 'main',
          -- your statusline
       	 config = require'plugins.statusline',
          -- some optional icons
          requires = {'kyazdani42/nvim-web-devicons', opt = true}
-      }
+      } ]]
  -- Snippets from VSCode
   use { 'hrsh7th/vim-vsnip' }
   use { 'hrsh7th/vim-vsnip-integ' }
@@ -94,6 +94,18 @@ return require('packer').startup(function()
          config = require'plugins.nvimtree',
       }
   use { 'windwp/nvim-autopairs',
-        config = require'plugins.autopairs'
+         config = require'plugins.autopairs'
+      }
+  use {
+        'phaazon/hop.nvim',
+         config = require'plugins.hop'
+  }
+  use { 
+         'kdav5758/TrueZen.nvim',
+         config = require'plugins.truezen'
+      }
+  use { 
+        'glepnir/dashboard-nvim',
+         config = require'plugins.dashboard'
       }
 end)
