@@ -1,3 +1,3 @@
-return function() 
-  vim.g.dashboard_default_executive = 'telescope'
+return function()
+  vim.api.nvim_set_var('dashboard_default_executive', 'telescope')
 end

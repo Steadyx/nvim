@@ -5,7 +5,7 @@ vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
 return require('packer').startup(function()
  -- Packer can manage itself as an optional plugin
-   use { 'wbthomason/packer.nvim', opt = true }
+  use { 'wbthomason/packer.nvim', opt = true }
  -- Git integration
   use {
 	      'tpope/vim-fugitive',
@@ -27,23 +27,22 @@ return require('packer').startup(function()
 	       config = require'plugins.treesitter',
        	 run = ':TSUpdate',
       }
-  use { 'nvim-treesitter/nvim-treesitter-refactor' }
  -- Neovim Language Server config
   use {
       	'neovim/nvim-lspconfig',
       	 config = require'plugins.lsp',
       }
   -- use { 'glepnir/lspsaga.nvim' }
+  use {
+        'lewis6991/gitsigns.nvim',
+         config = require'plugins.gitsigns'
+      }
  -- Completion engine
   use {
-      	'nvim-lua/completion-nvim',
+      	'hrsh7th/nvim-compe',
       	 config = require'plugins.completion'
       }
  -- Conquer of Completion, Language Server mainly for ESlint/Explorer
-  use {
-      	'neoclide/coc.nvim',
-	       branch = 'release',
-      }
  -- DevIcons for Telescope
   use { 'kyazdani42/nvim-web-devicons' }
  -- Colorscheme
@@ -62,17 +61,18 @@ return require('packer').startup(function()
         'RishabhRD/nvim-cheat.sh',
       }
  -- Status line helper
-  --[[ use {
+  use {
         'glepnir/galaxyline.nvim',
          branch = 'main',
          -- your statusline
       	 config = require'plugins.statusline',
          -- some optional icons
          requires = {'kyazdani42/nvim-web-devicons', opt = true}
-      } ]]
+      }
  -- Snippets from VSCode
   use { 'hrsh7th/vim-vsnip' }
   use { 'hrsh7th/vim-vsnip-integ' }
+  use { 'dsznajder/vscode-es7-javascript-react-snippets' }
   use { 'hollowtree/vscode-vue-snippets' }
   use { 'sdras/vue-vscode-snippets' }
   use { 'RishabhRD/nvim-lsputils',
@@ -100,12 +100,12 @@ return require('packer').startup(function()
         'phaazon/hop.nvim',
          config = require'plugins.hop'
   }
-  use { 
+  use {
          'kdav5758/TrueZen.nvim',
          config = require'plugins.truezen'
       }
-  use { 
+  --[[ use {
         'glepnir/dashboard-nvim',
-         config = require'plugins.dashboard'
-      }
+	       config = require'plugins.dashboard'
+      } ]]
 end)

@@ -1,8 +1,8 @@
+vim.o.completeopt = "menuone,noselect"
 -- Set leader as space
 vim.g.mapleader = " "
 local opts = {noremap = true, silent = true}
 vim.api.nvim_set_keymap('n', '<SPACE>','<Nop>' , opts)
-
 -- Save with <Leader> w
 vim.api.nvim_set_keymap('n', '<Leader>w',':w<CR>' , opts)
 -- Quit everything with <Leader> x

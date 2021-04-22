@@ -29,7 +29,7 @@ return function()
                                "/lua-language-server"
     local servers = {
         "vuels", "rust_analyzer", "tsserver", "intelephense", "sumneko_lua",
-        "pyright", "bashls"
+        "bashls"
     }
 
     local on_attach = function(client, bufnr)
@@ -43,7 +43,7 @@ return function()
                 bufnr, ...
             )
         end
-        local function set_completion() require'completion'.on_attach() end
+--        local function set_completion() require'completion'.on_attach() end
 
         buf_set_option(
             'omnifunc', 'v:lua.vim.lsp.omnifunc'
@@ -99,7 +99,7 @@ return function()
             'n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
             opts
         )
-        set_completion()
+        -- set_completion()
         -- Set some keybinds conditional on server capabilities
         if client.resolved_capabilities.document_formatting then
             buf_set_keymap(
