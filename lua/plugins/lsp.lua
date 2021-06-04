@@ -29,7 +29,7 @@ return function()
                                "/lua-language-server"
     local servers = {
         "vuels", "rust_analyzer", "tsserver", "intelephense", "sumneko_lua",
-        "bashls"
+        "bashls", "clangd"
     }
 
     local on_attach = function(client, bufnr)
@@ -56,9 +56,6 @@ return function()
         )
         buf_set_keymap(
             'n', '<C-]>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts
-        )
-        buf_set_keymap(
-            'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts
         )
         buf_set_keymap(
             'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts
@@ -135,8 +132,7 @@ return function()
             nvim_lsp[lsp].setup {
                 on_attach = on_attach,
                 cmd = {
-                    sumneko_binary, "-E",
-                    home .. "/lua-language-server/main.lua"
+                    sumneko_binary, "-E", home .. "/lua-language-server/main.lua"
                 },
                 settings = {
                     Lua = {
@@ -166,7 +162,13 @@ return function()
                     }
                 }
             }
-        else
+        elseif lsp == "clangd" then
+            nvim_lsp[lsp].setup {
+              cmd = {
+                '/Library/Developer/CommandLineTools/usr/bin/clangd', "--background-index"
+            }
+          }
+          else
             nvim_lsp[lsp].setup {on_attach = on_attach}
         end
     end
