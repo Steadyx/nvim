@@ -32,7 +32,10 @@ return require('packer').startup(function()
       	'neovim/nvim-lspconfig',
       	 config = require'plugins.lsp',
       }
-  -- use { 'glepnir/lspsaga.nvim' }
+  use { 
+        'glepnir/lspsaga.nvim',
+        config = require'plugins.lspsaga'
+      }
   use {
         'lewis6991/gitsigns.nvim',
          config = require'plugins.gitsigns'
@@ -101,11 +104,11 @@ return require('packer').startup(function()
          config = require'plugins.hop'
   }
   use {
-         'kdav5758/TrueZen.nvim',
-         config = require'plugins.truezen'
+         'folke/zen-mode.nvim',
+         config = require'plugins.zenmode'
       }
-  --[[ use {
+  use {
         'glepnir/dashboard-nvim',
 	       config = require'plugins.dashboard'
-      } ]]
+      }
 end)
