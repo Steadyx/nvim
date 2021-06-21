@@ -32,7 +32,7 @@ return require('packer').startup(function()
       	'neovim/nvim-lspconfig',
       	 config = require'plugins.lsp',
       }
-  use { 
+  use {
         'glepnir/lspsaga.nvim',
         config = require'plugins.lspsaga'
       }
@@ -110,5 +110,23 @@ return require('packer').startup(function()
   use {
         'glepnir/dashboard-nvim',
 	       config = require'plugins.dashboard'
+      }
+  use {
+        'p00f/nvim-ts-rainbow',
+	       config = require'plugins.tsRainbow'
+      }
+  use {
+        'camspiers/snap',
+         rocks = {'fzy'},
+	       config = require'plugins.snap'
+      }
+  use {
+        'onsails/lspkind-nvim',
+	       config = require'plugins.lspKind'
+      }
+  use {
+        'TimUntersberger/neogit',
+         requires = 'nvim-lua/plenary.nvim',
+	       config = require'plugins.neogit'
       }
 end)

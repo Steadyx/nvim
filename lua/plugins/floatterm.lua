@@ -14,6 +14,5 @@ return function ()
   local opts = { noremap = true, silent = true }
 
   -- Closer to the metal
-  map('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
-  map('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+  map('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
 end
