@@ -104,6 +104,10 @@ return require('packer').startup(function()
          config = require'plugins.hop'
   }
   use {
+         'folke/twilight.nvim',
+         config = require'plugins.twilight'
+      }
+  use {
          'folke/zen-mode.nvim',
          config = require'plugins.zenmode'
       }
@@ -111,10 +115,10 @@ return require('packer').startup(function()
         'glepnir/dashboard-nvim',
 	       config = require'plugins.dashboard'
       }
-  use {
+  --[[ use {
         'p00f/nvim-ts-rainbow',
 	       config = require'plugins.tsRainbow'
-      }
+      } ]]
   use {
         'camspiers/snap',
          rocks = {'fzy'},
@@ -128,5 +132,9 @@ return require('packer').startup(function()
         'TimUntersberger/neogit',
          requires = 'nvim-lua/plenary.nvim',
 	       config = require'plugins.neogit'
+      }
+  use {
+        'kristijanhusak/orgmode.nvim',
+	       config = require'plugins.orgmode'
       }
 end)

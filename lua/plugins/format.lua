@@ -41,6 +41,12 @@ return function()
         rust = {{cmd = {'rustfmt'}}},
         python = {{cmd = {'black'}}},
         go = {{cmd = {"gofmt -w", "goimports -w"}, tempfile_postfix = ".tmp"}},
+        scss = {
+            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+        },
+        html = {
+            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+        },
         typescriptreact = {
             {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
         },

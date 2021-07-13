@@ -38,7 +38,7 @@ return function()
     require(
         'telescope'
     ).setup {
-        defaults = {
+        layout_config = {
             prompt_position = "top",
             selection_strategy = "reset",
             sorting_strategy = "ascending",
