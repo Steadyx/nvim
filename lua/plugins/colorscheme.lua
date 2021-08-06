@@ -1,6 +1,4 @@
 return function()
-  vim.o.termguicolors = true
-
-  -- set colorscheme
-  vim.cmd [[ colorscheme zephyr ]]
+    local zephyr = require('zephyr')
+    return zephyr
 end

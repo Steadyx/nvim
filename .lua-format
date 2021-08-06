@@ -1,2 +1,2 @@
 break_before_functioncall_rp: true
-break_after_functioncall_lp: true
+spaces_inside_table_braces: true

@@ -1,3 +1,1 @@
-return function()
-  require('twilight').setup {}
-end
+return function() require('twilight').setup {} end

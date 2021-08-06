@@ -7,7 +7,7 @@ return function()
                 -- if type(def) == 'table' and type(def[#def]) == 'function' then
                 -- 	def[#def] = lua_callback(def[#def])
                 -- end
-                local command = table.concat(vim.tbl_flatten {'autocmd', def},
+                local command = table.concat(vim.tbl_flatten { 'autocmd', def },
                                              ' ')
                 vim.api.nvim_command(command)
             end
@@ -15,50 +15,48 @@ return function()
         end
     end
 
-    local autocmds = {Format = {{"BufWritePost", "*", [[FormatWrite]]}}}
+    local autocmds = { Format = { { "BufWritePost", "*", [[FormatWrite]] } } }
 
     nvim_create_augroups(autocmds)
 
     require"format".setup {
         ["*"] = {
-            {cmd = {"sed -i '' -E 's/[ '$'\t'']+$//'"}} -- remove trailing whitespace
+            { cmd = { "sed -i '' -E 's/[ '$'\t'']+$//'" } } -- remove trailing whitespace
         },
         vim = {
             {
-                cmd = {"lua-format -i"},
+                cmd = { "lua-format -i" },
                 start_pattern = "^lua << EOF$",
                 end_pattern = "^EOF$"
             }
         },
         vimwiki = {
             {
-                cmd = {"prettier -w --parser babel"},
+                cmd = { "prettier -w --parser babel" },
                 start_pattern = "^{{{javascript$",
                 end_pattern = "^}}}$"
             }
         },
-        lua = {{cmd = {'lua-format -i'}}},
-        rust = {{cmd = {'rustfmt'}}},
-        python = {{cmd = {'black'}}},
-        go = {{cmd = {"gofmt -w", "goimports -w"}, tempfile_postfix = ".tmp"}},
-        scss = {
-            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+        lua = { { cmd = { 'lua-format -i' } } },
+        rust = { { cmd = { 'rustfmt' } } },
+        python = { { cmd = { 'black' } } },
+        go = {
+            { cmd = { "gofmt -w", "goimports -w" }, tempfile_postfix = ".tmp" }
         },
-        html = {
-            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
-        },
+        scss = { { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } } },
+        html = { { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } } },
         typescriptreact = {
-            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+            { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } }
         },
         react = {
-            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+            { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } }
         },
         javascript = {
-            {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+            { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } }
         },
         markdown = {
-            {cmd = {"prettier -w"}}, {
-                cmd = {"black"},
+            { cmd = { "prettier -w" } }, {
+                cmd = { "black" },
                 start_pattern = "^```python$",
                 end_pattern = "^```$",
                 target = "current"

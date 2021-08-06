@@ -5,6 +5,4 @@ local function prerequire(...)
     return nil
 end
 
-return {
-  prerequire = prerequire
-}
+return { prerequire = prerequire }

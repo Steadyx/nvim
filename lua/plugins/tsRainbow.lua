@@ -1,3 +1,1 @@
-return function()
-  return {}
-end
+return function() return {} end
