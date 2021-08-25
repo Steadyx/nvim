@@ -18,7 +18,7 @@ return function()
                                "/lua-language-server"
     local servers = {
         "vuels", "rust_analyzer", "tsserver", "intelephense", "sumneko_lua",
-        "bashls", "clangd"
+        "bashls", "clangd", "cssls"
     }
 
     local on_attach = function(client, bufnr)
@@ -60,6 +60,7 @@ return function()
                        opts)
         buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
                        opts)
+        buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
         buf_set_keymap('n', '<space>q',
                        '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
         -- set_completion()

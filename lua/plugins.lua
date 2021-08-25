@@ -10,14 +10,11 @@ return require('packer').startup(function(use)
     use { 'tpope/vim-fugitive', config = require 'plugins.fugitive' }
     -- Auto Formatting
     use { 'lukas-reineke/format.nvim', config = require 'plugins.format' }
+    -- Colorscheme
+    use {'EdenEast/nightfox.nvim', config = require 'plugins.colorscheme', as = 'colorscheme' }
     -- Quickscope - Fast horizontal movement
     use { 'unblevable/quick-scope', config = require 'plugins.quickscope' }
-    -- Colorscheme
-    use {
-        'glepnir/zephyr-nvim',
-        config = require 'plugins.colorscheme',
-        as = 'colorscheme'
-    }
+    -- Only highlight current scope when in zen mode
     use { "folke/twilight.nvim", config = require 'plugins.twilight' }
     -- Neovim Treesitter syntax highlighting
     use {
@@ -32,7 +29,9 @@ return require('packer').startup(function(use)
     -- Gitgutter
     use { 'lewis6991/gitsigns.nvim', config = require 'plugins.gitsigns' }
     -- Completion engine
-    use { 'hrsh7th/nvim-compe', config = require 'plugins.completion' }
+    use { 'hrsh7th/nvim-cmp', config = require 'plugins.completion' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-nvim-lua' }
     -- DevIcons for Telescope
     use { 'kyazdani42/nvim-web-devicons' }
     -- Vim Surround - Surrounding/deleting
@@ -42,8 +41,6 @@ return require('packer').startup(function(use)
     -- Cheat Sheat
     use { 'RishabhRD/popfix' }
     use { 'RishabhRD/nvim-cheat.sh' }
-    -- Status line helper
-    use { 'datwaft/bubbly.nvim', config = require 'plugins.statusline' }
     -- Snippets from VSCode
     use { 'hrsh7th/vim-vsnip' }
     use { 'hrsh7th/vim-vsnip-integ' }
@@ -54,11 +51,11 @@ return require('packer').startup(function(use)
     -- Auto comment
     use { 'b3nj5m1n/kommentary' }
     -- Telecope - A powerful/extensible fuzzy file searcher
-    use { 'nvim-lua/popup.nvim' }
-    use { 'nvim-lua/plenary.nvim', branch = 'async_jobs_v2' }
+    -- use { 'nvim-lua/popup.nvim' }
+    use { 'nvim-lua/plenary.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
-        branch = 'async_v2',
+        requires = { { 'nvim-lua/plenary.nvim' } } ,
         config = require 'plugins.telescope'
     }
     -- Floatterm - a floating terminal for neovim
@@ -86,5 +83,11 @@ return require('packer').startup(function(use)
         'vhyrro/neorg',
         config = require 'plugins.orgmode',
         requires = "nvim-lua/plenary.nvim"
+    }
+    -- Status line helper
+    use {
+        'hoob3rt/lualine.nvim',
+        config = require 'plugins.statusline',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 end)
