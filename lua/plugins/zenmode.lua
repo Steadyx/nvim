@@ -1,9 +1,5 @@
 return function()
-    require('zen-mode').setup {
-        --[[ plugins = {
-       twilight = { enabled = true },
-      } ]]
-    }
+    require('zen-mode').setup {}
 
     local opts = { noremap = true, silent = true }
     vim.api.nvim_set_keymap('n', '<Leader>c',

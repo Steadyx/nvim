@@ -5,7 +5,7 @@ return function()
             vim.api.nvim_command('autocmd!')
             for _, def in ipairs(definition) do
                 -- if type(def) == 'table' and type(def[#def]) == 'function' then
-                -- 	def[#def] = lua_callback(def[#def])
+                -- def[#def] = lua_callback(def[#def])
                 -- end
                 local command = table.concat(vim.tbl_flatten { 'autocmd', def },
                                              ' ')
@@ -48,7 +48,7 @@ return function()
         typescriptreact = {
             { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } }
         },
-        react = {
+        javascriptreact = {
             { cmd = { "prettier -w", "./node_modules/.bin/eslint --fix" } }
         },
         javascript = {

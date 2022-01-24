@@ -17,7 +17,9 @@ vim.cmd [[ set shiftwidth=2 ]]
 vim.cmd [[ set ignorecase ]]
 vim.cmd [[ set smartcase ]]
 vim.cmd [[ set cursorline ]]
-vim.cmd [[ set cursorcolumn ]]
+vim.cmd [[ set wrap ]]
+vim.cmd [[ set linebreak ]]
+vim.cmd [[ set tw=80 ]]
 vim.o.termguicolors = true
 
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', opts)

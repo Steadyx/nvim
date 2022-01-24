@@ -1,5 +1,7 @@
 return function()
     local system_name
+    local nvim_lsp = require "lspconfig"
+    local cmp_lsp = require "cmp_nvim_lsp"
 
     if vim.fn.has("mac") == 1 then
         system_name = "macOS"
@@ -12,13 +14,12 @@ return function()
     end
 
     local home = os.getenv('HOME')
-    local nvim_lsp = require('lspconfig')
 
     local sumneko_binary = home .. "/lua-language-server/bin/" .. system_name ..
                                "/lua-language-server"
     local servers = {
-        "vuels", "rust_analyzer", "tsserver", "intelephense", "sumneko_lua",
-        "bashls", "clangd", "cssls"
+        "vuels", "rust_analyzer", "tsserver", "intelephense", "bashls",
+        "clangd", "cssls"
     }
 
     local on_attach = function(client, bufnr)
@@ -65,13 +66,13 @@ return function()
                        '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
         -- set_completion()
         -- Set some keybinds conditional on server capabilities
-        if client.resolved_capabilities.document_formatting then
-            buf_set_keymap("n", "<Leader>ff",
+        --[[ if client.resolved_capabilities.document_formatting then
+            buf_set_keymap("n", "<Leader>w",
                            "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
         elseif client.resolved_capabilities.document_range_formatting then
-            buf_set_keymap("n", "<Leader>ff",
+            buf_set_keymap("n", "<Leader>w",
                            "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-        end
+        end ]]
 
         -- Set autocommands conditional on server_capabilities
         if client.resolved_capabilities.document_highlight then
@@ -89,8 +90,10 @@ return function()
     end
 
     for _, lsp in ipairs(servers) do
-        if lsp == "sumneko_lua" then
+        --[[ if lsp == "sumneko_lua" then
             nvim_lsp[lsp].setup {
+                capabilities = require('cmp_nvim_lsp').update_capabilities(
+                    vim.lsp.protocol.make_client_capabilities()),
                 on_attach = on_attach,
                 cmd = {
                     sumneko_binary, "-E",
@@ -120,23 +123,36 @@ return function()
             }
         elseif lsp == "clangd" then
             nvim_lsp[lsp].setup {
+                capabilities = require('cmp_nvim_lsp').update_capabilities(
+                    vim.lsp.protocol.make_client_capabilities()),
+
                 cmd = {
                     '/Library/Developer/CommandLineTools/usr/bin/clangd',
                     "--background-index"
                 }
             }
         else
-            nvim_lsp[lsp].setup { on_attach = on_attach }
-        end
+
+        end ]]
+        nvim_lsp[lsp].setup {
+            capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp
+                                                                           .protocol
+                                                                           .make_client_capabilities()),
+            on_attach = on_attach
+        }
+
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+                                                                  vim.lsp
+                                                                      .diagnostic
+                                                                      .on_publish_diagnostics,
+                                                                  {
+                -- Enable underline, use default values
+                underline = true,
+                -- Enable virtual text, override spacing to 4
+                virtual_text = { spacing = 4 },
+                -- Disable a feature
+                update_in_insert = true
+            })
     end
 
-    vim.lsp.handlers["textDocument/publishDiagnostics"] =
-        vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            -- Enable underline, use default values
-            underline = true,
-            -- Enable virtual text, override spacing to 4
-            virtual_text = { spacing = 4 },
-            -- Disable a feature
-            update_in_insert = true
-        })
 end

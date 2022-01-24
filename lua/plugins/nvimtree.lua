@@ -1,4 +1,7 @@
 return function()
+    local opts = { noremap = true, silent = true }
+    require'nvim-tree'.setup {}
+
     vim.api.nvim_set_var('nvim_tree_width', 40)
     vim.api.nvim_set_var('nvim_tree_ignore ',
                          { '.git', 'node_modules', '.cache' })
@@ -21,6 +24,5 @@ return function()
     vim.api.nvim_set_var('nvim_tree_group_empty', 1)
     vim.api.nvim_set_var('nvim_tree_lsp_diagnostics ', 1)
 
-    local opts = { noremap = true, silent = true }
     vim.api.nvim_set_keymap('n', '<C-e>', ':NvimTreeToggle<CR>', opts)
 end

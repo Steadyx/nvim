@@ -1,2 +1,3 @@
-return
-    function() require('lualine').setup { options = { theme = 'nightfox' } } end
+return function()
+    require('lualine').setup { options = { theme = "material-nvim" } }
+end

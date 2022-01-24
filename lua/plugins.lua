@@ -11,11 +11,13 @@ return require('packer').startup(function(use)
     -- Auto Formatting
     use { 'lukas-reineke/format.nvim', config = require 'plugins.format' }
     -- Colorscheme
-    use {'EdenEast/nightfox.nvim', config = require 'plugins.colorscheme', as = 'colorscheme' }
-    -- Quickscope - Fast horizontal movement
-    use { 'unblevable/quick-scope', config = require 'plugins.quickscope' }
+    use {
+        'marko-cerovac/material.nvim',
+        config = require 'plugins.colorscheme',
+        as = 'colorscheme'
+    }
     -- Only highlight current scope when in zen mode
-    use { "folke/twilight.nvim", config = require 'plugins.twilight' }
+    -- use { "folke/twilight.nvim", config = require 'plugins.twilight' }
     -- Neovim Treesitter syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -30,6 +32,7 @@ return require('packer').startup(function(use)
     use { 'lewis6991/gitsigns.nvim', config = require 'plugins.gitsigns' }
     -- Completion engine
     use { 'hrsh7th/nvim-cmp', config = require 'plugins.completion' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
     use { 'hrsh7th/cmp-buffer' }
     use { 'hrsh7th/cmp-nvim-lua' }
     -- DevIcons for Telescope
@@ -55,7 +58,7 @@ return require('packer').startup(function(use)
     use { 'nvim-lua/plenary.nvim' }
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } } ,
+        requires = { { 'nvim-lua/plenary.nvim' } },
         config = require 'plugins.telescope'
     }
     -- Floatterm - a floating terminal for neovim
@@ -90,4 +93,8 @@ return require('packer').startup(function(use)
         config = require 'plugins.statusline',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use { 'ggandor/lightspeed.nvim', config = require 'plugins.lightspeed' }
+    use { 'puremourning/vimspector', config = require 'plugins.vimspector' }
+    use { 'p00f/nvim-ts-rainbow' }
+    use { 'github/copilot.vim' }
 end)
