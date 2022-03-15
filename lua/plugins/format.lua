@@ -4,7 +4,6 @@ return function()
 			require("null-ls").builtins.formatting.stylua,
 			require("null-ls").builtins.formatting.prettier,
 			require("null-ls").builtins.diagnostics.eslint,
-			require("null-ls").builtins.completion.spell,
 		},
 		on_attach = function(client)
 			if client.resolved_capabilities.document_formatting then
