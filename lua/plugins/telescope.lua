@@ -58,12 +58,6 @@ return function()
 		"<cmd>lua require('telescope.builtin').buffers{ show_all_buffers = true }<cr>",
 		opts
 	)
-	vim.api.nvim_set_keymap(
-		"n",
-		"gr",
-		"<cmd>lua require'telescope.builtin'.lsp_references{ shorten_path = true }<CR>",
-		opts
-	)
 	vim.api.nvim_set_keymap("n", "g0", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
 	vim.api.nvim_set_keymap("n", "gp", "<cmd>lua require'telescope.builtin'.live_grep{}<CR>", opts)
 	vim.api.nvim_set_keymap("n", "gW", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>", opts)
