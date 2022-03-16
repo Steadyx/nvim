@@ -1,6 +1,25 @@
 return function()
 	local nvim_lsp = require("lspconfig")
 	local opts = { noremap = true, silent = true }
+	-- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#000000]])
+	vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=cyan guibg=#000000]])
+
+	local border = {
+		{ "╭", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╮", "FloatBorder" },
+		{ "│", "FloatBorder" },
+		{ "╯", "FloatBorder" },
+		{ "─", "FloatBorder" },
+		{ "╰", "FloatBorder" },
+		{ "│", "FloatBorder" },
+	}
+
+	local handlers = {
+		["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+		["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+	}
+
 	vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -51,6 +70,7 @@ return function()
 				},
 			},
 			on_attach = on_attach,
+			handlers = handlers,
 			flags = {
 				-- This will be the default in neovim 0.7+
 				debounce_text_changes = 150,
