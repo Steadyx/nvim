@@ -1,8 +1,6 @@
 return function()
 	local nvim_lsp = require("lspconfig")
 	local opts = { noremap = true, silent = true }
-	-- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#000000]])
-	vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=cyan guibg=#000000]])
 
 	local border = {
 		{ "╭", "FloatBorder" },
@@ -35,7 +33,6 @@ return function()
 		-- Mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

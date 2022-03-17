@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
 	-- Neovim Language Server config
 	use({ "neovim/nvim-lspconfig", config = require("plugins.lsp") })
 	-- API atop the native lang server
-	use({ "glepnir/lspsaga.nvim", config = require("plugins.lspsaga") })
+	-- use({ "glepnir/lspsaga.nvim", config = require("plugins.lspsaga") })
 	-- Gitgutter
 	use({ "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") })
 	-- Completion engine
