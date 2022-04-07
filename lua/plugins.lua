@@ -32,6 +32,13 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-path" })
 	use({ "hrsh7th/cmp-cmdline" })
 	use({ "hrsh7th/nvim-cmp", branch = "dev", config = require("plugins.completion") })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	-- Snippets from VSCode
+	use({ "L3MON4D3/LuaSnip" })
+	use({
+		"rafamadriz/friendly-snippets",
+		config = require("plugins.friendly-snippets"),
+	})
 	-- DevIcons for Telescope
 	use({ "kyazdani42/nvim-web-devicons" })
 	-- Vim Surround - Surrounding/deleting
@@ -41,13 +48,7 @@ return require("packer").startup(function(use)
 	-- Cheat Sheat
 	use({ "RishabhRD/popfix" })
 	use({ "RishabhRD/nvim-cheat.sh" })
-	-- Snippets from VSCode
-	use({ "saadparwaiz1/cmp_luasnip" })
-	use({ "L3MON4D3/LuaSnip" })
-	use({
-		"rafamadriz/friendly-snippets",
-		config = require("plugins.friendly-snippets"),
-	})
+	-- LSP configuration
 	use({ "RishabhRD/nvim-lsputils", config = require("plugins.lsputils") })
 	-- Auto comment
 	use({ "b3nj5m1n/kommentary" })
@@ -64,8 +65,6 @@ return require("packer").startup(function(use)
 	use({ "kyazdani42/nvim-tree.lua", config = require("plugins.nvimtree") })
 	-- Autopairing
 	use({ "windwp/nvim-autopairs", config = require("plugins.autopairs") })
-	-- Hop to any character
-	use({ "phaazon/hop.nvim", config = require("plugins.hop") })
 	-- Minimise screen clutter
 	use({ "folke/zen-mode.nvim", config = require("plugins.zenmode") })
 	-- Splash screen
@@ -78,12 +77,6 @@ return require("packer").startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 		config = require("plugins.neogit"),
 	})
-	-- Orgmode for vim
-	use({
-		"vhyrro/neorg",
-		config = require("plugins.orgmode"),
-		requires = "nvim-lua/plenary.nvim",
-	})
 	-- Status line helper
 	use({
 		"hoob3rt/lualine.nvim",
@@ -91,10 +84,14 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use({ "ggandor/lightspeed.nvim", config = require("plugins.lightspeed") })
-	-- use({ "puremourning/vimspector", config = require("plugins.vimspector") })
+	-- Highlight matching parenthesis and brackets
 	use({ "p00f/nvim-ts-rainbow" })
+	-- Highlight colors in hex and rgb
 	use({ "norcalli/nvim-colorizer.lua", config = require("plugins.colorizer") })
+	-- A powerful diff tool
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	-- Follow urls without using the mouse
 	use({ "axieax/urlview.nvim", config = require("plugins.urlview") })
+	-- Code generation with deep learning
 	use({ "github/copilot.vim" })
 end)
