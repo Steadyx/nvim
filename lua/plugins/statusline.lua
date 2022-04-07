@@ -1,3 +1,3 @@
 return function()
-    require('lualine').setup { options = { theme = "material-nvim" } }
+	require("lualine").setup({ options = { theme = "kanagawa", globalStatus = true } })
 end

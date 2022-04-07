@@ -12,12 +12,10 @@ return require("packer").startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", config = require("plugins.format") })
 	-- Colorscheme
 	use({
-		"marko-cerovac/material.nvim",
+		"rebelot/kanagawa.nvim",
 		config = require("plugins.colorscheme"),
 		as = "colorscheme",
 	})
-	-- Only highlight current scope when in zen mode
-	-- use { "folke/twilight.nvim", config = require 'plugins.twilight' }
 	-- Neovim Treesitter syntax highlighting
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -26,8 +24,6 @@ return require("packer").startup(function(use)
 	})
 	-- Neovim Language Server config
 	use({ "neovim/nvim-lspconfig", config = require("plugins.lsp") })
-	-- API atop the native lang server
-	-- use({ "glepnir/lspsaga.nvim", config = require("plugins.lspsaga") })
 	-- Gitgutter
 	use({ "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") })
 	-- Completion engine
@@ -35,7 +31,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-buffer" })
 	use({ "hrsh7th/cmp-path" })
 	use({ "hrsh7th/cmp-cmdline" })
-	use({ "hrsh7th/nvim-cmp", config = require("plugins.completion") })
+	use({ "hrsh7th/nvim-cmp", branch = "dev", config = require("plugins.completion") })
 	-- DevIcons for Telescope
 	use({ "kyazdani42/nvim-web-devicons" })
 	-- Vim Surround - Surrounding/deleting
@@ -56,7 +52,6 @@ return require("packer").startup(function(use)
 	-- Auto comment
 	use({ "b3nj5m1n/kommentary" })
 	-- Telecope - A powerful/extensible fuzzy file searcher
-	-- use { 'nvim-lua/popup.nvim' }
 	use({ "nvim-lua/plenary.nvim" })
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -96,8 +91,10 @@ return require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use({ "ggandor/lightspeed.nvim", config = require("plugins.lightspeed") })
-	use({ "puremourning/vimspector", config = require("plugins.vimspector") })
+	-- use({ "puremourning/vimspector", config = require("plugins.vimspector") })
 	use({ "p00f/nvim-ts-rainbow" })
-	use({ "github/copilot.vim" })
 	use({ "norcalli/nvim-colorizer.lua", config = require("plugins.colorizer") })
+	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+	use({ "axieax/urlview.nvim", config = require("plugins.urlview") })
+	use({ "github/copilot.vim" })
 end)

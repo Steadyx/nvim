@@ -1,5 +1,6 @@
 return function()
-	vim.g.material_style = "deep ocean"
+	vim.cmd("colorscheme kanagawa")
+	--[[ vim.g.material_style = "deep ocean"
 	require("material").setup({
 		custom_highlights = {
 			Function = { fg = "#00FF00", bg = "#FF0000", gui = "bold" },
@@ -46,5 +47,5 @@ return function()
 	})
 	require("lualine").setup({ options = { theme = "material-nvim" } })
 
-	vim.cmd("colorscheme material")
+	vim.cmd("colorscheme material") ]]
 end
