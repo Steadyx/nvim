@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
 		config = require("plugins.telescope"),
 	})
 	-- Floatterm - a floating terminal for neovim
-	use({ "numtostr/FTerm.nvim", config = require("plugins.floatterm") })
+	use({ "akinsho/toggleterm.nvim", config = require("plugins.floatterm") })
 	-- Tree explorer
 	use({ "kyazdani42/nvim-tree.lua", config = require("plugins.nvimtree") })
 	-- Autopairing
