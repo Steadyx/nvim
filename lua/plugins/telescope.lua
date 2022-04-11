@@ -66,4 +66,5 @@ return function()
 	vim.api.nvim_set_keymap("n", "gI", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
 	vim.api.nvim_set_keymap("n", "gk", "<cmd>lua require'telescope.builtin'.keymaps{}<CR>", opts)
 	vim.api.nvim_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
+	vim.api.nvim_set_keymap("n", "gv", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", opts)
 end
