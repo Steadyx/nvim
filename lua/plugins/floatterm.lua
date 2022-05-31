@@ -35,11 +35,30 @@ return function()
 		lazygit:toggle()
 	end
 
+	function _Broot()
+		local broot = Terminal:new({
+			cmd = "broot",
+			close_on_exit = true,
+			dir = "git_dir",
+			direction = "float",
+			float_opts = {
+				border = "double",
+				height = height,
+				width = width,
+			},
+			on_open = function(term)
+				vim.cmd("startinsert!")
+				vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
+			end,
+		})
+
+		broot:toggle()
+	end
+
+	function _Lazygit_open()
+		lazygit:open()
+	end
+
+	vim.api.nvim_set_keymap("n", "gq", "", { noremap = true, silent = true, callback = _Broot })
 	vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _Lazygit_toggle()<CR>", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap(
-		"n",
-		"<leader>d",
-		":TermExec cmd='nvm use 8 && npm run build && nvm use node && exit' direction='float'<CR>",
-		{ noremap = true, silent = true }
-	)
 end

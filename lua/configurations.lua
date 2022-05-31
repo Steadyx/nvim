@@ -23,6 +23,7 @@ vim.cmd([[ set wrap ]])
 vim.cmd([[ set linebreak ]])
 vim.cmd([[ set tw=80 ]])
 vim.cmd([[ set colorcolumn=80 ]])
+
 vim.o.termguicolors = true
 
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", opts)

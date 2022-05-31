@@ -31,7 +31,7 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/cmp-buffer" })
 	use({ "hrsh7th/cmp-path" })
 	use({ "hrsh7th/cmp-cmdline" })
-	use({ "hrsh7th/nvim-cmp", branch = "dev", config = require("plugins.completion") })
+	use({ "hrsh7th/nvim-cmp", config = require("plugins.completion") })
 	use({ "saadparwaiz1/cmp_luasnip" })
 	-- Snippets from VSCode
 	use({ "L3MON4D3/LuaSnip" })
@@ -94,4 +94,8 @@ return require("packer").startup(function(use)
 	use({ "axieax/urlview.nvim", config = require("plugins.urlview") })
 	-- Code generation with deep learning
 	use({ "github/copilot.vim" })
+	-- Display line indentation
+	use({ "lukas-reineke/indent-blankline.nvim", config = require("plugins.indentline") })
+	--- orgmode for neovim
+	use({ "nvim-neorg/neorg", config = require("plugins.neorg"), requires = "nvim-lua/plenary.nvim" })
 end)

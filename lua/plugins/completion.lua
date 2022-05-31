@@ -5,6 +5,9 @@ return function()
 	vim.opt.completeopt = "menuone,noselect"
 
 	cmp.setup({
+		view = {
+			entries = "custom",
+		},
 		snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)
@@ -78,40 +81,46 @@ return function()
 		preselect = cmp.PreselectMode.Item,
 	})
 
-	require("cmp").setup.cmdline(":", {
-		sources = {
-			{ name = "cmdline" },
-		},
-	})
-
-	require("cmp").setup.cmdline("/", {
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
 			{ name = "buffer" },
 		},
 	})
 
+	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
+
 	--set highlights
-	local highlights = {
-		CmpItemKindText = { fg = "LightGrey" },
+	--[[ local highlights = {
+		CmpItemKindText = { fg = "LightGrey", bg = "Yellow" },
 		CmpItemKindFunction = { fg = "#C586C0" },
 		CmpItemKindClass = { fg = "Orange" },
 		CmpItemKindKeyword = { fg = "#f90c71" },
 		CmpItemKindSnippet = { fg = "#565c64" },
 		CmpItemKindConstructor = { fg = "#ae43f0" },
 		CmpItemKindVariable = { fg = "#9CDCFE", bg = "NONE" },
-		CmpItemKindInterface = { fg = "#f90c71", bg = "NONE" },
-		CmpItemKindFolder = { fg = "#2986cc" },
+		CmpItemKindInterface = { fg = "#f90c71", bg = "#f90c71" },
+		CmpItemKindFolder = { fg = "Green" },
 		CmpItemKindReference = { fg = "#922b21" },
 		CmpItemKindMethod = { fg = "#C586C0" },
-		CmpItemMenu = { fg = "#C586C0", bg = "#C586C0" },
-		CmpItemAbbr = { fg = "#565c64", bg = "NONE" },
-		CmpItemAbbrMatch = { fg = "#569CD6", bg = "NONE" },
-		CmpItemAbbrMatchFuzzy = { fg = "#569CD6", bg = "NONE" },
+		CmpItemMenu = { fg = "Green", bg = "Red" },
+		CmpItemAbbr = { fg = "#565c64", bg = "Red" },
+		CmpItemAbbrMatch = { fg = "Green", bg = "Red" },
+		CmpItemAbbrMatchFuzzy = { fg = "Green", bg = "Red" },
+		CmpBorderedWindow_FloatBorder = { fg = "Orange", bg = "Green" },
 	}
 
-	vim.api.nvim_set_hl(0, "CmpBorderedWindow_FloatBorder", { fg = "#565c64" })
+  vim.chh
 
 	for group, hl in pairs(highlights) do
 		vim.api.nvim_set_hl(0, group, hl)
-	end
+	end ]]
 end
