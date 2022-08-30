@@ -40,7 +40,7 @@ return function()
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	local servers = { "sourcekit", "cssls", "rust_analyzer", "tsserver", "sumneko_lua", "gopls", "bashls", "html" }
