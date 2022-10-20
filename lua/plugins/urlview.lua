@@ -1,7 +1,8 @@
 return function()
 	require("urlview").setup({
-		default_picker = "telescope",
+		default_picker = "native",
+    unique = false,
 	})
-	vim.api.nvim_set_keymap("n", "gl", "<cmd>Telescope urlview<cr>", { noremap = true, silent = true })
-	require("telescope").load_extension("urlview")
+
+  vim.keymap.set("n", "<leader>u", "<Cmd>UrlView<CR>", { desc = "view buffer URLs" })
 end

@@ -29,9 +29,11 @@ return function()
 	require("null-ls").setup({
 		sources = {
 			require("null-ls").builtins.formatting.stylua,
+			require("null-ls").builtins.formatting.rustfmt,
 			require("null-ls").builtins.formatting.shfmt,
-			require("null-ls").builtins.formatting.prettier,
-			require("null-ls").builtins.diagnostics.eslint,
+			require("null-ls").builtins.formatting.gofmt,
+			require("null-ls").builtins.formatting.prettierd,
+			require("null-ls").builtins.diagnostics.eslint_d,
 		},
 		on_attach = function(client, bufnr)
 			on_attach(client, bufnr)

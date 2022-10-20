@@ -1,6 +1,7 @@
 return function()
 	local opts = { noremap = true, silent = true }
 
+	-- ignore .git and node_modules
 	require("telescope").setup({
 		defaults = {
 			mappings = {
@@ -10,6 +11,7 @@ return function()
 				},
 			},
 		},
+		file_ignore_patterns = { "node_modules", ".git", ".lua" },
 		pickers = {
 			find_files = {
 				theme = "dropdown",
@@ -47,7 +49,12 @@ return function()
 		},
 	})
 
-	vim.api.nvim_set_keymap("n", "<c-p>", "<cmd>lua require('telescope.builtin').find_files()<CR>", opts)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<c-p>",
+		"<cmd>lua require('telescope.builtin').find_files({ file_ignore_patterns = { 'node_modules', '.git' }})<CR>",
+		opts
+	)
 	vim.api.nvim_set_keymap(
 		"n",
 		"gb",

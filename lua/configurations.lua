@@ -9,6 +9,8 @@ vim.api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", opts)
 vim.api.nvim_set_keymap("n", "<Leader>x", ":qa!<CR>", opts)
 -- Quit without saving  <Leader> q
 vim.api.nvim_set_keymap("n", "<Leader>z", ":q!<CR>", opts)
+vim.o.stl = " "
+vim.o.wbr = vim.o.stl
 
 vim.cmd([[ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" ]])
 vim.cmd([[ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" ]])
