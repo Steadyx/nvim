@@ -12,7 +12,7 @@ return require("packer").startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", config = require("plugins.format") })
 	-- Colorscheme
 	use({
-		"rebelot/kanagawa.nvim",
+		"catppuccin/nvim",
 		config = require("plugins.colorscheme"),
 		as = "colorscheme",
 	})
@@ -104,5 +104,94 @@ return require("packer").startup(function(use)
 	use({ "lukas-reineke/indent-blankline.nvim", config = require("plugins.indentline") })
 	--- orgmode for neovim
 	use({ "nvim-neorg/neorg", config = require("plugins.neorg"), requires = "nvim-lua/plenary.nvim" })
-	use({ "David-Kunz/markid" })
+	-- use({ "David-Kunz/markid" })
+	use({
+		"cbochs/portal.nvim",
+		config = function()
+			require("portal").setup({})
+			vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
+			vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
+		end,
+	})
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup()
+		end,
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
+	use({
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		config = function()
+			vim.cmd([[
+    hi BqfPreviewBorder guifg=#50a14f ctermfg=71
+    hi link BqfPreviewRange Search
+]])
+
+			require("bqf").setup({
+				auto_enable = true,
+				auto_resize_height = true, -- highly recommended enable
+				preview = {
+					win_height = 12,
+					win_vheight = 12,
+					delay_syntax = 80,
+					border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+					show_title = false,
+					should_preview_cb = function(bufnr, qwinid)
+						local ret = true
+						local bufname = vim.api.nvim_buf_get_name(bufnr)
+						local fsize = vim.fn.getfsize(bufname)
+						if fsize > 100 * 1024 then
+							-- skip file size greater than 100k
+							ret = false
+						elseif bufname:match("^fugitive://") then
+							-- skip fugitive buffer
+							ret = false
+						end
+						return ret
+					end,
+				},
+				-- make `drop` and `tab drop` to become preferred
+				func_map = {
+					drop = "o",
+					openc = "O",
+					split = "<C-s>",
+					tabdrop = "<C-t>",
+					tabc = "",
+					ptogglemode = "z,",
+				},
+				filter = {
+					fzf = {
+						action_for = { ["ctrl-s"] = "split", ["ctrl-t"] = "tab drop" },
+						extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+					},
+				},
+			})
+		end,
+	})
+	-- optional
+	use({
+		"junegunn/fzf",
+		run = function()
+			vim.fn["fzf#install"]()
+		end,
+	})
+-- 	use({
+-- 		"nvim-neotest/neotest",
+-- 		requires = {
+-- 			"nvim-lua/plenary.nvim",
+-- 			"nvim-treesitter/nvim-treesitter",
+-- 			"antoinemadec/FixCursorHold.nvim",
+--       'haydenmeade/neotest-jest',
+-- 		},
+--   config = require("plugins.tests"),
+-- 	})
 end)

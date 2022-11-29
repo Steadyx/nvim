@@ -4,11 +4,18 @@ local opts = { noremap = true, silent = true }
 -- Remap Leader to Space
 vim.g.mapleader = " "
 -- Save with <Leader> w
-vim.api.nvim_set_keymap("n", "<Leader>w", ":w<CR>", opts)
+vim.keymap.set("n", "<Leader>w", ":w<CR>", opts)
 -- Quit everything with <Leader> x
-vim.api.nvim_set_keymap("n", "<Leader>x", ":qa!<CR>", opts)
+vim.keymap.set("n", "<Leader>x", ":qa!<CR>", opts)
 -- Quit without saving  <Leader> q
-vim.api.nvim_set_keymap("n", "<Leader>z", ":q!<CR>", opts)
+vim.keymap.set("n", "<Leader>z", ":q!<CR>", opts)
+-- create a keymap for cdo quickfix, open floating window to rename
+vim.keymap.set("n", "<Leader>rr", ":cdo s//", opts)
+-- cfdo up to update files
+vim.keymap.set("n", "<Leader>uu", ":cfdo up<CR>", opts)
+-- open quickfix list
+vim.keymap.set("n", "<Leader>qo", ":copen<CR>", opts)
+
 vim.o.stl = " "
 vim.o.wbr = vim.o.stl
 
@@ -24,8 +31,7 @@ vim.cmd([[ set cursorline ]])
 vim.cmd([[ set wrap ]])
 vim.cmd([[ set linebreak ]])
 vim.cmd([[ set tw=80 ]])
-vim.cmd([[ set colorcolumn=80 ]])
 
 vim.o.termguicolors = true
 
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", opts)
+vim.keymap.set("i", "jj", "<Esc>", opts)

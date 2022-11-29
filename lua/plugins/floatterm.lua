@@ -59,6 +59,6 @@ return function()
 		lazygit:open()
 	end
 
-	vim.api.nvim_set_keymap("n", "gq", "", { noremap = true, silent = true, callback = _Broot })
-	vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _Lazygit_toggle()<CR>", { noremap = true, silent = true })
+	vim.keymap.set("n", "gq", "", { noremap = true, silent = true, callback = _Broot })
+	vim.keymap.set("n", "<leader>g", "<cmd>lua _Lazygit_toggle()<CR>", { noremap = true, silent = true })
 end

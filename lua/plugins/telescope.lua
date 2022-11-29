@@ -33,6 +33,14 @@ return function()
 			},
 			buffers = {
 				theme = "dropdown",
+				mappings = {
+					i = {
+						["<C-d>"] = require("telescope.actions").delete_buffer,
+					},
+					n = {
+						["<C-d>"] = require("telescope.actions").delete_buffer,
+					},
+				},
 			},
 			diagnositcs = {
 				theme = "dropdown",
@@ -49,28 +57,25 @@ return function()
 		},
 	})
 
-	vim.api.nvim_set_keymap(
+	vim.keymap.set(
 		"n",
 		"<c-p>",
 		"<cmd>lua require('telescope.builtin').find_files({ file_ignore_patterns = { 'node_modules', '.git' }})<CR>",
 		opts
 	)
-	vim.api.nvim_set_keymap(
-		"n",
-		"gb",
-		"<cmd>lua require('telescope.builtin').buffers{ show_all_buffers = true }<cr>",
-		opts
-	)
+	-- remove a buffer
+	vim.keymap.set("n", "gb", "<cmd>lua require('telescope.builtin').buffers{ show_all_buffers = true }<cr>", opts)
 
 	require("telescope").load_extension("file_browser")
 
-	vim.api.nvim_set_keymap("n", "g0", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gp", "<cmd>lua require'telescope.builtin'.live_grep{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gW", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "<Leader>gc", "<cmd>lua require'telescope.builtin'.git_branches{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gI", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gk", "<cmd>lua require'telescope.builtin'.keymaps{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
-	vim.api.nvim_set_keymap("n", "gv", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", opts)
+	vim.keymap.set("n", "g0", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>", opts)
+	vim.keymap.set("n", "gp", "<cmd>lua require'telescope.builtin'.live_grep{}<CR>", opts)
+	vim.keymap.set("n", "gP", "<cmd>lua require'telescope.builtin'.grep_string{}<CR>", opts)
+	vim.keymap.set("n", "gW", "<cmd>lua require'telescope.builtin'.lsp_workspace_symbols{}<CR>", opts)
+	vim.keymap.set("n", "<Leader>gc", "<cmd>lua require'telescope.builtin'.git_branches{}<CR>", opts)
+	vim.keymap.set("n", "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", opts)
+	vim.keymap.set("n", "gI", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>", opts)
+	vim.keymap.set("n", "gk", "<cmd>lua require'telescope.builtin'.keymaps{}<CR>", opts)
+	vim.keymap.set("n", "gd", "<cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>", opts)
+	vim.keymap.set("n", "gv", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>", opts)
 end
