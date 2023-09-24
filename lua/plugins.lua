@@ -6,6 +6,8 @@ vim.cmd([[ autocmd BufWritePost plugins.lua PackerCompile ]])
 return require("packer").startup(function(use)
 	-- Packer can manage itself as an optional plugin
 	use({ "wbthomason/packer.nvim", opt = true })
+	-- lsp stuff
+	use({ "williamboman/mason.nvim", config = require("plugins.mason") })
 	-- Git integration
 	use({ "tpope/vim-fugitive", config = require("plugins.fugitive") })
 	-- Auto Formatting
@@ -25,7 +27,7 @@ return require("packer").startup(function(use)
 	-- Neovim Language Server config
 	use({ "neovim/nvim-lspconfig", config = require("plugins.lsp") })
 	-- Gitgutter
-	use({ "lewis6991/gitsigns.nvim", config = require("plugins.gitsigns") })
+	use({ "lewis6991/gitsigns.nvim" })
 	-- Completion engine
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-buffer" })
@@ -72,7 +74,7 @@ return require("packer").startup(function(use)
 	-- Autopairing
 	use({ "windwp/nvim-autopairs", config = require("plugins.autopairs") })
 	-- Minimise screen clutter
-	use({ "folke/zen-mode.nvim", config = require("plugins.zenmode") })
+	-- use({ "folke/zen-mode.nvim", config = require("plugins.zenmode") })
 	-- Splash screen
 	use({ "glepnir/dashboard-nvim", config = require("plugins.dashboard") })
 	-- Iconify lsp text
@@ -91,7 +93,7 @@ return require("packer").startup(function(use)
 	})
 	use({ "ggandor/lightspeed.nvim", config = require("plugins.lightspeed") })
 	-- Highlight matching parenthesis and brackets
-	use({ "p00f/nvim-ts-rainbow" })
+	use({ "hiphish/rainbow-delimiters.nvim" })
 	-- Highlight colors in hex and rgb
 	use({ "norcalli/nvim-colorizer.lua", config = require("plugins.colorizer") })
 	-- A powerful diff tool
@@ -99,19 +101,18 @@ return require("packer").startup(function(use)
 	-- Follow urls without using the mouse
 	use({ "axieax/urlview.nvim", config = require("plugins.urlview") })
 	-- Code generation with deep learning
-	use({ "github/copilot.vim", config = require("plugins.copilot") })
+	-- use({ "github/copilot.vim", config = require("plugins.copilot") })
 	-- Display line indentation
 	use({ "lukas-reineke/indent-blankline.nvim", config = require("plugins.indentline") })
 	--- orgmode for neovim
-	use({ "nvim-neorg/neorg", config = require("plugins.neorg"), requires = "nvim-lua/plenary.nvim" })
+	-- use({ "nvim-neorg/neorg", config = require("plugins.neorg"), requires = "nvim-lua/plenary.nvim" })
 	-- use({ "David-Kunz/markid" })
 	use({
 		"cbochs/portal.nvim",
-		config = function()
-			require("portal").setup({})
-			vim.keymap.set("n", "<leader>o", require("portal").jump_backward, {})
-			vim.keymap.set("n", "<leader>i", require("portal").jump_forward, {})
-		end,
+		requires = {
+			"cbochs/grapple.nvim",
+			"ThePrimeagen/harpoon",
+		},
 	})
 	use({
 		"folke/noice.nvim",
@@ -124,7 +125,7 @@ return require("packer").startup(function(use)
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
+			-- "rcarriga/nvim-notify",
 		},
 	})
 	use({
@@ -134,7 +135,7 @@ return require("packer").startup(function(use)
 			vim.cmd([[
     hi BqfPreviewBorder guifg=#50a14f ctermfg=71
     hi link BqfPreviewRange Search
-]])
+    ]])
 
 			require("bqf").setup({
 				auto_enable = true,
@@ -177,6 +178,17 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 	-- optional
 	use({
 		"junegunn/fzf",
@@ -184,14 +196,14 @@ return require("packer").startup(function(use)
 			vim.fn["fzf#install"]()
 		end,
 	})
--- 	use({
--- 		"nvim-neotest/neotest",
--- 		requires = {
--- 			"nvim-lua/plenary.nvim",
--- 			"nvim-treesitter/nvim-treesitter",
--- 			"antoinemadec/FixCursorHold.nvim",
---       'haydenmeade/neotest-jest',
--- 		},
---   config = require("plugins.tests"),
--- 	})
+	-- 	use({
+	-- 		"nvim-neotest/neotest",
+	-- 		requires = {
+	-- 			"nvim-lua/plenary.nvim",
+	-- 			"nvim-treesitter/nvim-treesitter",
+	-- 			"antoinemadec/FixCursorHold.nvim",
+	--       'haydenmeade/neotest-jest',
+	-- 		},
+	--   config = require("plugins.tests"),
+	-- 	})
 end)
